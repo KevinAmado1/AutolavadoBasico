@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class AutoLavadoBasico {
+    public static void main(String[] args) {
+        // colas o filas
+        Queue<Integer> lavado = new LinkedList<>();
+        Queue<Integer> secado = new LinkedList<>();
+        Queue<Integer> aspirado = new LinkedList<>();
+
+        //agregamos 1, 2 y 3 como carros
+        lavado.add(1);
+        lavado.add(2);
+        lavado.add(3);
+
+        // imprimimos estado inicial
+        System.out.println("Estado inicial:");
+        //imprimimos las colas
+        imprimirColas(lavado, secado, aspirado);
+
+        // movemos un coche de lavado a secado
+        if (!lavado.isEmpty()) {
+            int coche = lavado.poll();
+            secado.add(coche);
+        }
+        System.out.println("\nDespués de mover Lavado -- Secado:");
+        imprimirColas(lavado, secado, aspirado);
+
+        //luego mover el coche de secado a aspirado
+        if (!secado.isEmpty()) {
+            int coche = secado.poll();
+            aspirado.add(coche);
+        }
+        System.out.println("\nDespués de mover Secado -> Aspirado:");
+        imprimirColas(lavado, secado, aspirado);
+    }
+
+    // Mimprimimos el estado d3 las 3 colas
+    public static void imprimirColas(Queue<Integer> lavado, Queue<Integer> secado, Queue<Integer> aspirado) {
+        System.out.println("Lavado: " + lavado);
+        System.out.println("Secado: " + secado);
+        System.out.println("Aspirado: " + aspirado);
+    }
+}
